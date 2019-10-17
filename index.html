@@ -20,9 +20,8 @@
     var loss = 0;
     var guesses = 8;
     var computerChoices = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-    var alreadyGuessed = []; //where the guesses need to be stored
+    var alreadyGuessed = []; //where the guesses need to be stored, needs use
     var userGuess;
-
 //these are for changing the information displayed 
     var winsText = document.getElementById ("wins-span");
     var lossText = document.getElementById ("loss-span");
@@ -33,20 +32,23 @@
     for (var i = 1; i < 4; i++) //adding the variables next to each other to be next to each other?
 
     //got this half from stackoverflow, should randomize what letter is slected
+    //The guess randomizes every press, need to change it for only one time
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)] //no longer in scope...
     document.onkeyup = function(event){
         var userGuess = event.key
-        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
         console.log(computerGuess);
         console.log(userGuess);
         if (userGuess === computerGuess)
             {
                 wins++
                 console.log(wins)
+                var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
                 guesses = 8
             }
         else if (userGuess !== computerGuess)
             {
                guesses - 1  
+               console.log(guesses)
             }
         else if (guess == 0){
                 loss ++
