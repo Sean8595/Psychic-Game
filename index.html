@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Psychic Game!</h1>
+    <p>Guess a letter to start</p>
+    <p>Wins: <span id = "wins-span"></span> </p>
+    <p>Losses: <span id = "loss-span"></span></p>
+    <p>Guesses Remaining: <span id = "guesses-span"></span></p>
+    <p>So far you have guessed: <span id= "guessed-letters-span"></span></p>
+
+    <script>
+    var wins = 0;
+    var loss = 0;
+    var guesses = 8;
+    var computerChoices = ['abcdefghijklmnopqrstuvwxyz'];
+    var alreadyGuessed = [];
+    var userGuess;
+    
+    document.onkeyup = function(event){
+        var userGuess = event.key
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+        if (userGuess === computerGuess)
+            {
+                wins++
+                guesses = 8
+            }
+        else if (userGuess !== computerGuess)
+            {
+               guesses - 1  
+            }
+        else if (guess == 0){
+                losses ++
+                guesses = 8
+        }
+    }
+    var 
+
+    </script>
+</body>
+</html>
