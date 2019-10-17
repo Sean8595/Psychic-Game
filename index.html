@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+<!-- Text displayed on the page -->
     <h1>Psychic Game!</h1>
     <p>Guess a letter to start</p>
     <p>Wins: <span id = "wins-span"></span> </p>
@@ -26,10 +27,12 @@
     var winsText = document.getElementById ("wins-span");
     var lossText = document.getElementById ("loss-span");
     var guessesText = document.getElementById ("guesses-span");
-    var alreadyGuessed = document.getElementById ("guessed-letter-span")
+    var alreadyGuessed = document.getElementById ("guessed-letter-span");
+    var guessesleft = document.getElementById( "guesses-span");
 
     for (var i = 1; i < 4; i++) //adding the variables next to each other to be next to each other?
 
+    //got this half from stackoverflow, should randomize what letter is slected
     document.onkeyup = function(event){
         var userGuess = event.key
         var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
@@ -43,11 +46,15 @@
                guesses - 1  
             }
         else if (guess == 0){
-                losses ++
+                loss ++
                 guesses = 8
         }
     }
-    var 
+    //should display the updated text on screen 
+winsText.textContent = wins;
+lossText.textContent = loss;
+guessedText.textContent = "";
+guessesleft.textContent = guesses;
 
     </script>
 </body>
