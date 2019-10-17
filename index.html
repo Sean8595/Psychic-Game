@@ -36,9 +36,12 @@
     document.onkeyup = function(event){
         var userGuess = event.key
         var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+        console.log(computerGuess);
+        console.log(userGuess);
         if (userGuess === computerGuess)
             {
                 wins++
+                console.log(wins)
                 guesses = 8
             }
         else if (userGuess !== computerGuess)
@@ -53,7 +56,6 @@
     //should display the updated text on screen 
 winsText.textContent = wins;
 lossText.textContent = loss;
-guessedText.textContent = "";
 guessesleft.textContent = guesses;
 
     </script>
