@@ -33,9 +33,11 @@
 
     //got this half from stackoverflow, should randomize what letter is slected
     //The guess randomizes every press, need to change it for only one time
-    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)] //no longer in scope...
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+    console.log(computerGuess) //no longer in scope...
     document.onkeyup = function(event){
         var userGuess = event.key
+        var computerGuess;
         console.log(computerGuess);
         console.log(userGuess);
         if (userGuess === computerGuess)
