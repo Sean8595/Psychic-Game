@@ -1,74 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
-<body>
-<!-- Text displayed on the page -->
+  </head>
+  <body>
     <h1>Psychic Game!</h1>
-    <p id = "directions-text"> Guess a letter to start!</p>
-    <p>Wins: <span id = "wins-span"></span> </p>
-    <p>Losses: <span id = "loss-span"></span></p>
-    <p>Guesses Remaining: <span id = "guesses-span"></span></p>
-    <p>So far you have guessed: <span id= "guessed-letters-span"></span></p>
+    <p id="directions-text">Guess a letter to start!</p>
+    <p>Wins: <span id="wins-span"></span></p>
+    <p>Losses: <span id="loss-span"></span></p>
+    <p>Guesses Remaining: <span id="guesses-span"></span></p>
+    <p>So far you have guessed: <span id="guessed-letter-span"></span></p>
 
     <script>
-    var wins = 0;
-    var loss = 0;
-    var guesses = 8;
-    var computerChoices = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-    var alreadyGuessed = []; //where the guesses need to be stored, needs use
-    var userGuess;
- 
-    var directionsText = document.getElementById("directions-text");
-    var winsText = document.getElementById ("wins-span");
-    var lossText = document.getElementById ("loss-span");
-    var guessesText = document.getElementById ("guesses-span");
-    var userText = document.getElementById ("guessed-letter-span");
-    var guessesleft = document.getElementById( "guesses-span");
+      var wins = 0;
+      var loss = 0;
+      var guesses = 8;
+      var computerChoices = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z"
+      ];
+      var alreadyGuessed = []; //where the guesses need to be stored, needs use
+      var userText = alreadyGuessed.toString();
+      //these are for changing the information displayed
+      var directionsText = document.getElementById("directions-text");
+      var winsText = document.getElementById("wins-span");
+      var lossText = document.getElementById("loss-span");
+      var guessesText = document.getElementById("guesses-span");
+      var userText = document.getElementById("guessed-letter-span");
+      var guessesleft = document.getElementById("guesses-span");
 
-    for (var i = 1; i < 4; i++) //adding the variables next to each other to be next to each other?
-
-    //got this half from stackoverflow, should randomize what letter is slected
-    //The guess randomizes every press, need to change it for only one time
-    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
-    console.log(computerGuess)
- //no longer in scope...
-    document.onkeyup = function(event){
-        userGuess = event.key  //still comes up undefined 
-        if (userGuess === computerGuess)
-            {
-                wins++
-                computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)]
-                guesses = 8
-            }
-        else if (userGuess !== computerGuess)
-            {
-               guesses = guesses - 1  
-            }
-        if (guesses === 0){
-                loss ++
-                guesses = 8
+      for (
+        var i = 1;
+        i < 4;
+        i++ //adding the variables next to each other to be next to each other?
+      )
+        //got this half from stackoverflow, should randomize what letter is slected
+        //The guess randomizes every press, need to change it for only one time
+        var computerGuess =
+          computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      console.log(computerGuess);
+      document.onkeyup = function(event) {
+        userGuess = event.key; //still comes up undefined
+        if (userGuess === computerGuess) {
+          wins++;
+          computerGuess =
+            computerChoices[Math.floor(Math.random() * computerChoices.length)];
+          guesses = 8;
+          alreadyGuessed = [];
+          console.log(computerGuess);
+        } else if (userGuess !== computerGuess) {
+          guesses = guesses - 1;
         }
-// document.push(alreadyGuessed) //trying to push this into an array called alreadyGuessed
-console.log(userGuess)
-console.log(alreadyGuessed)
-//should display the updated text
-userText.textContent = alreadyGuessed;
-alreadyGuessed.push(userGuess);
-directionsText.textContent = ""
-winsText.textContent = wins;
-lossText.textContent = loss;
-guessesleft.textContent = guesses;
-// userText.textContent = userGuess; 
-    }
+        if (guesses === 0) {
+          loss++;
+          computerGuess =
+            computerChoices[Math.floor(Math.random() * computerChoices.length)];
+          console.log(computerGuess);
+          alreadyGuessed = [];
+          guesses = 8;
+        }
+        // document.push(alreadyGuessed) //trying to push this into an array called alreadyGuessed
+        console.log(userGuess);
+        alreadyGuessed.push(userGuess);
 
+        //should display the updated text
+        directionsText.textContent = "";
+        winsText.textContent = wins;
+        lossText.textContent = loss;
+        guessesleft.textContent = guesses;
+        userText.textContent = alreadyGuessed.join(" ");
+      };
     </script>
-</body>
+  </body>
 </html>
 
-<!-- Need to: Display already guessed,
+<!-- Need to: Display already guessed,and not allow repeat guesses 
  -->
